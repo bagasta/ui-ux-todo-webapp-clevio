@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium To-Do List</title>
+    <!-- Menghubungkan file CSS eksternal -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Mengambil font modern 'Outfit' dari Google Fonts untuk tampilan premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Menggunakan FontAwesome untuk ikon (opsional, tapi bagus untuk UI) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Container utama untuk menengahkan konten -->
+    <div class="container">
+        
+        <!-- Kartu Aplikasi To-Do List -->
+        <div class="todo-app">
+            
+            <!-- Bagian Header: Judul dan Tanggal -->
+            <header class="app-header">
+                <h1>Tugas Saya</h1>
+                <p class="date">Selasa, 2 Desember 2025</p>
+            </header>
+
+            <!-- Bagian Input: Tempat mengetik tugas baru -->
+            <div class="input-group">
+                <input type="text" placeholder="Apa rencana Anda hari ini?" class="todo-input">
+                <button class="add-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+
+            <!-- Bagian List: Daftar tugas -->
+            <ul class="todo-list">
+                
+                <!-- Contoh Item Tugas 1 (Belum Selesai) -->
+                <li class="todo-item">
+                    <label class="checkbox-container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span class="task-text">Menyelesaikan desain UI website</span>
+                    <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                </li>
+
+                <!-- Contoh Item Tugas 2 (Selesai) -->
+                <li class="todo-item completed">
+                    <label class="checkbox-container">
+                        <input type="checkbox" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <span class="task-text">Meeting dengan klien jam 10:00</span>
+                    <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                </li>
+
+                <!-- Contoh Item Tugas 3 -->
+                <li class="todo-item">
+                    <label class="checkbox-container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span class="task-text">Belajar CSS Grid dan Flexbox</span>
+                    <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                </li>
+
+                <!-- Contoh Item Tugas 4 -->
+                <li class="todo-item">
+                    <label class="checkbox-container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span class="task-text">Olahraga sore</span>
+                    <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                </li>
+
+            </ul>
+
+            <!-- Footer kecil untuk info jumlah tugas -->
+            <div class="app-footer">
+                <span>3 tugas tersisa</span>
+                <button class="clear-btn">Hapus Selesai</button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

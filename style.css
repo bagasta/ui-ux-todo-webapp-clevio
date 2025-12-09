@@ -1,0 +1,309 @@
+/* =========================================
+   RESET & VARIABEL GLOBAL
+   ========================================= */
+   :root {
+    /* Palet Warna Premium */
+    --primary-color: #6C63FF;       /* Ungu cerah untuk aksen utama */
+    --primary-hover: #5a52d5;       /* Versi lebih gelap untuk hover */
+    --bg-gradient-1: #1a1a2e;      /* Warna latar belakang gelap 1 */
+    --bg-gradient-2: #16213e;      /* Warna latar belakang gelap 2 */
+    --card-bg: rgba(255, 255, 255, 0.95); /* Putih transparan untuk efek kaca */
+    --text-main: #2d3436;          /* Warna teks utama */
+    --text-secondary: #636e72;     /* Warna teks sekunder (tanggal, dll) */
+    --danger-color: #ff7675;       /* Warna merah soft untuk hapus */
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Bayangan halus */
+    --radius: 16px;                /* Sudut melengkung */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif; /* Menggunakan font modern */
+}
+
+/* =========================================
+   LAYOUT UTAMA (BODY & CONTAINER)
+   ========================================= */
+body {
+    background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: var(--text-main);
+}
+
+.container {
+    width: 100%;
+    max-width: 480px; /* Lebar maksimal agar rapi di desktop */
+}
+
+/* =========================================
+   KARTU APLIKASI (GLASSMORPHISM STYLE)
+   ========================================= */
+.todo-app {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 30px;
+    width: 100%;
+    /* Efek backdrop filter untuk blur di belakang (opsional, terlihat jika bg transparan) */
+    backdrop-filter: blur(10px); 
+    transition: transform 0.3s ease;
+}
+
+.todo-app:hover {
+    transform: translateY(-5px); /* Efek melayang sedikit saat hover */
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+.app-header {
+    margin-bottom: 25px;
+}
+
+.app-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.app-header .date {
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* =========================================
+   INPUT GROUP
+   ========================================= */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.todo-input {
+    flex: 1; /* Mengisi sisa ruang */
+    padding: 12px 16px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.todo-input:focus {
+    border-color: var(--primary-color);
+}
+
+.add-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px; /* Membuat tombol kotak/lingkaran */
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-btn:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.05);
+}
+
+/* =========================================
+   LIST TUGAS (TODO LIST)
+   ========================================= */
+.todo-list {
+    list-style: none;
+    max-height: 400px;
+    overflow-y: auto; /* Scroll jika terlalu panjang */
+    padding-right: 5px; /* Ruang untuk scrollbar */
+}
+
+/* Kustomisasi Scrollbar agar cantik */
+.todo-list::-webkit-scrollbar {
+    width: 6px;
+}
+.todo-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.todo-list::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.todo-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-color: #e0e0e0;
+}
+
+/* =========================================
+   CUSTOM CHECKBOX
+   ========================================= */
+.checkbox-container {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Sembunyikan checkbox asli browser */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Buat checkbox kustom */
+.checkmark {
+    position: absolute;
+    top: -10px; /* Sesuaikan posisi vertikal */
+    left: 0;
+    height: 22px;
+    width: 22px;
+    background-color: #eee;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+/* Saat hover */
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* Saat dicentang */
+.checkbox-container input:checked ~ .checkmark {
+    background-color: var(--primary-color);
+}
+
+/* Tanda centang (hidden by default) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Tampilkan tanda centang saat checked */
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Bentuk tanda centang */
+.checkbox-container .checkmark:after {
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* =========================================
+   TEKS TUGAS & TOMBOL HAPUS
+   ========================================= */
+.task-text {
+    flex-grow: 1; /* Mengisi ruang tengah */
+    margin-left: 10px;
+    font-size: 16px;
+    color: var(--text-main);
+    transition: color 0.3s;
+}
+
+/* Efek coret jika selesai */
+.todo-item.completed .task-text,
+.todo-item:has(input:checked) .task-text { /* Modern CSS: :has selector */
+    text-decoration: line-through;
+    color: #b2bec3;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #dfe6e9;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.3s;
+    padding: 5px;
+}
+
+.todo-item:hover .delete-btn {
+    color: var(--danger-color); /* Muncul warna merah saat item di-hover */
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.app-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--text-secondary);
+    border-top: 1px solid #f0f0f0;
+    padding-top: 15px;
+}
+
+.clear-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.clear-btn:hover {
+    color: var(--primary-color);
+}
+
+/* =========================================
+   RESPONSIVE (MOBILE)
+   ========================================= */
+@media (max-width: 480px) {
+    .container {
+        padding: 0;
+    }
+    
+    .todo-app {
+        border-radius: 0; /* Full screen di mobile kecil */
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .todo-list {
+        flex-grow: 1; /* List mengisi sisa layar */
+    }
+
+    .app-header h1 {
+        font-size: 24px;
+    }
+}
