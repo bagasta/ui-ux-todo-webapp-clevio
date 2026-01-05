@@ -238,8 +238,3 @@ Sekarang kita akan "menghidupkan" aplikasi ini. Jika HTML adalah kerangka (tulan
    <script src="script.js"></script>
    ```
 3. Salin kode logika ke `script.js` (lihat file script.js untuk komentar penjelasan setiap baris).
-
-### Tantangan untuk Kamu
-- Coba ubah pesan `alert` saat input kosong.
-- Bisakah kamu membuat fitur agar saat tugas dihapus, muncul konfirmasi "Yakin hapus?" dulu? (`confirm()`).
-- Cobalah simpan data ke `localStorage` agar tidak hilang saat di-refresh!
