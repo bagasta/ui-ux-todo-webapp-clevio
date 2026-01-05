@@ -212,3 +212,34 @@ Ikuti urutan ini untuk memahami tiap bagian. Salin ke file baru atau bandingkan 
 - Tambahkan filter (Semua / Selesai / Belum) dan pencarian.
 - Buat versi tema terang/gelap dengan toggle yang mengubah variabel CSS.
 
+
+## Pengenalan JavaScript: Membuat Interaktif
+
+Sekarang kita akan "menghidupkan" aplikasi ini. Jika HTML adalah kerangka (tulang), dan CSS adalah kulit (baju), maka **JavaScript adalah otak** yang membuat aplikasi bisa berpikir dan bergerak.
+
+### Konsep Dasar: 3 Pilar Utama
+1. **Variabel**: Tempat menyimpan data atau elemen HTML. Bayangkan seperti memberi nama label pada sebuah kotak.
+   ```javascript
+   const tombol = document.querySelector('.btn');
+   ```
+2. **Function**: Resep masakan. Sekumpulan langkah yang kita simpan, dan bisa dimasak (dijalankan) kapan saja.
+   ```javascript
+   function sapa() { alert("Halo!"); }
+   ```
+3. **Event**: Pemicu. "Jika [ini terjadi], maka lakukan [itu]".
+   ```javascript
+   tombol.addEventListener('click', sapa);
+   ```
+
+### Langkah Implementasi
+1. Buat file baru bernama `script.js` di folder yang sama.
+2. Hubungkan di `index.html` (tepat sebelum `</body>`):
+   ```html
+   <script src="script.js"></script>
+   ```
+3. Salin kode logika ke `script.js` (lihat file script.js untuk komentar penjelasan setiap baris).
+
+### Tantangan untuk Kamu
+- Coba ubah pesan `alert` saat input kosong.
+- Bisakah kamu membuat fitur agar saat tugas dihapus, muncul konfirmasi "Yakin hapus?" dulu? (`confirm()`).
+- Cobalah simpan data ke `localStorage` agar tidak hilang saat di-refresh!
